@@ -7,6 +7,8 @@ from PyQt5.QtWidgets import(
         QWidget,
         )
 
+# Need to clear canvas
+# get data from canvas and send to tesseract.
 
 class MainWindow(QtWidgets.QMainWindow):
 

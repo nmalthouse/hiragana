@@ -1,7 +1,7 @@
 import random
 import time
 import corpus as corpuslib
-corpus = corpuslib.corpus
+corpus = corpuslib.new_corp
 
 def writer(count = 10):
     for i in range(0,count):
@@ -10,16 +10,20 @@ def writer(count = 10):
         input()
         print(cor[1])
 
-def typer(count = 50):
+def typer(count = 50, stlen = 1):
     score = 0
     num = count
     tstart = time.time()
     for i in range(0,num):
-        ind = random.randrange(len(corpus))
-        cor = corpus[ind]
-        let = input(cor[1] + " : ")
-        if let != cor[1]:
-            print("incorrect: ", cor[0] )
+        key = ""
+        for j in range(0,stlen):
+            key += corpus[random.randrange(len(corpus))][1]
+
+        #ind = random.randrange(len(corpus))
+        #cor = corpus[ind]
+        let = input(key + " : ")
+        if let != key:
+            print("incorrect: " )
         else:
             score += 1
     

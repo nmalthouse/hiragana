@@ -10,7 +10,7 @@ K = [ ["ka","か"],
     ["ko","こ"]]
 S = [
     ["sa","さ"],
-    ["si","し"],
+    ["shi","し"],
     ["su","す"],
     ["se","せ"],
     ["so","そ"]]
@@ -54,5 +54,9 @@ W = [
     ["wo","を"],
     ["n","ん"]]
 
-corpus = A + K
+corpus =     A + K + S + T + N + H + M + R
 fullcorpus = A + K + S + T + N + H + M + R + Y + W
+new_corp = fullcorpus
+#new_corp = Y + W + R + A
+#new_corp = A + N + H + M + T
+# new_corp = Y + W
