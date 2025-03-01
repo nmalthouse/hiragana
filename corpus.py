@@ -92,7 +92,26 @@ P = [
 seion = A + K + S + T + N + H + M + R + Y + W
 dakuten = Z + D + B + P
 
+mapping = {
+        'A':A, 'K':K, 'S':S, 'T':T, 'N':N, 'H':H,
+        'M':M, 'R':R, 'Y':Y, 'W':W, 'Z':Z, 'D':D,
+        'B':B, 'P':P}
+
 new_corp = seion + D + Z
-#new_corp = Y + W + R + A
-#new_corp = A + N + H + M + T
-# new_corp = Y + W
+all_hiragana = "AKSTNHMRYWZDBP"
+
+def getAggregateList(symb = all_hiragana):
+    agg = []
+    for char in symb:
+        agg += mapping[char]
+    return agg
+
+
+
+def getAggregateString(symb = all_hiragana):
+    allchars = ""
+    for char in symb:
+        for item in mapping[char]:
+            allchars += item[1]
+    return allchars
+

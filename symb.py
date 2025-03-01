@@ -1,16 +1,17 @@
 import random
 import time
 import corpus as corpuslib
-corpus = corpuslib.new_corp
+import argparse
 
-def writer(count = 10):
-    for i in range(0,count):
-        cor = corpus[random.randrange(len(corpus))]
-        print(cor[0])
-        input()
-        print(cor[1])
+default_kana = corpuslib.all_hiragana
+parser = argparse.ArgumentParser( description="drill individual hiragana")
+parser.add_argument('--count', type=int, default=50, help="number to drill")
+parser.add_argument('--len', type=int, default=1, help="number of kana per drill, default 1")
+parser.add_argument('--include' , type=str, default=default_kana, help="A string specifying the hiragana groups to drill, default is: " + default_kana + " To drill just vowels and K's do --include AK")
+args = parser.parse_args()
+corpus = corpuslib.getAggregateList(args.include)
 
-def typer(count = 50, stlen = 1):
+def typer(count = args.count, stlen = args.len):
     score = 0
     num = count
     tstart = time.time()
