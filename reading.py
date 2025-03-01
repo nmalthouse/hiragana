@@ -2,14 +2,14 @@ import sqlite3
 import json
 import subprocess
 import random
-import corpus
+import src.hiragana as hira
 import argparse
 # requires mpv to be installed and in path
 # How it works
 # It displays the kana and english translation for a random word.
 # You sound out the word first, then type.
 # Hitting enter with a blank line will play the associated mp3 file to check pronunciation
-default_kana = corpus.all_hiragana
+default_kana = hira.all_hiragana
 parser = argparse.ArgumentParser( description="Practice reading hiragana")
 parser.add_argument("--count", type=int, default = 50)
 parser.add_argument("--minkana", type=int, help="If specified, only drill words with atleast MINKANA kana", default=1)
@@ -27,7 +27,7 @@ inv_map = {v: k for k, v in mp3map.items()}
 min_kana_count = args.minkana
 do_all = False
 
-allchars = corpus.getAggregateString(args.include)
+allchars = hira.getAggregateString(args.include)
 
 vocab_list = []
 count = 0

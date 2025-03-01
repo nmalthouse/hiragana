@@ -1,13 +1,13 @@
-import corpus
+import src.hiragana as hira
 import csv
 import random
 import argparse
 
-default_kana = corpus.all_hiragana
+default_kana = hira.all_hiragana
 parser = argparse.ArgumentParser(
         description='drill typing hiragana words')
 parser.add_argument('--include_all' , action='store_true', help='Don\'t filter out kana')
-parser.add_argument('--csv' , type=str, default="vocab1.csv")
+parser.add_argument('--csv' , type=str, default="data/vocab1.csv")
 parser.add_argument('--include' , type=str, default=default_kana, help="A string specifying the hiragana groups to drill, default is: " + default_kana + " To drill just words with vowels and K's do --include AK")
 
 parser.add_argument('--count' , type=int, default=50, help="Number to drill")
@@ -21,7 +21,7 @@ kana_col = "Vocab-kana"
 eng_col = "Vocab-meaning"
 #fname = 'basicvc.csv'
 
-allchars = corpus.getAggregateString(args.include)
+allchars = hira.getAggregateString(args.include)
 
 
 vocab_list = []
