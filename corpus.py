@@ -54,9 +54,45 @@ W = [
     ["wo","を"],
     ["n","ん"]]
 
-corpus =     A + K + S + T + N + H + M + R
-fullcorpus = A + K + S + T + N + H + M + R + Y + W
-new_corp = fullcorpus
+G = [
+    ["ga","が"],
+    ["gi","ぎ"],
+    ["gu","ぐ"],
+    ["ge","げ"],
+    ["go","ご"]]
+
+Z = [
+["za","ざ"],
+["ji","じ"],
+["zu","ず"],
+["ze","ぜ"],
+["zo","ぞ"]]
+
+D = [
+["da","だ"],
+["di","ぢ"],
+["du","づ"],
+["de","で"],
+["do","ど"]]
+
+B = [
+["ba","ば"],
+["bi","び"],
+["bu","ぶ"],
+["be","べ"],
+["bo","ぼ"]]
+
+P = [
+["pa","ぱ"],
+["pi","ぴ"],
+["pu","ぷ"],
+["pe","ぺ"],
+["po","ぽ"]]
+
+seion = A + K + S + T + N + H + M + R + Y + W
+dakuten = Z + D + B + P
+
+new_corp = seion + D + Z
 #new_corp = Y + W + R + A
 #new_corp = A + N + H + M + T
 # new_corp = Y + W
