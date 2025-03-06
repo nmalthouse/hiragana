@@ -39,4 +39,15 @@ H = [
 ["fu","フ"],
 ["he","ヘ"],
 ["ho","ホ"]]
+M = []
 
+mapping = {
+        'A':A, 'K':K, 'S':S, 'T':T, 'N':N, 'H':H,
+        }
+        #'M':M, 'R':R, 'Y':Y, 'W':W, 'Z':Z, 'D':D,
+        #'B':B, 'P':P}
+def getAggregateList(symb):
+    agg = []
+    for char in symb:
+        agg += mapping[char]
+    return agg
