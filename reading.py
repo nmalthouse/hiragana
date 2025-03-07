@@ -26,6 +26,8 @@ parser.add_argument('--kanji', action='store_true', help='Display Kanji' )
 parser.add_argument('--sentence', action='store_true', help='Do sentences instead of word' )
 parser.add_argument('--sentence-max', type=int, help='Max length of sentences to drill' , default=1000)
 parser.add_argument('--mpv-args', type=str, help='pass extra args to mpv, like --speed=0.8' , default="")
+parser.add_argument('--clearcreen', type=bool, help='clear screen for each entry' , default=True)
+parser.add_argument('--max-index', type=int, help='cap the index', default=None )
 
 args = parser.parse_args()
 
@@ -110,12 +112,25 @@ v_list = vocab_list
 if args.sentence:
     v_list = sentence_list
 
+last_index = 0
 for i in range(0, args.count):
-    item = v_list[random.randrange(len(v_list))]
+    max_index = len(v_list)
+    if args.max_index != None and args.max_index < max_index:
+        max_index = args.max_index
+        
+    index = random.randrange(max_index)
+    if len(v_list) > 1:
+        while index == last_index: # prevent the same question twice in a row  
+            index = random.randrange(max_index)
+        last_index = index
 
+    item = v_list[index]
+
+    if args.clearcreen:
+        print('\033[2J\033[H')
     print(item['kana'])
-    if args.kanji:
-        print("kanji")
+    if args.kanji and item["kanji"] != item['kana']:
+        print(item["kanji"])
 
     while True:
         response = input(':')
