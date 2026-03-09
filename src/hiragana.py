@@ -100,6 +100,37 @@ mapping = {
 new_corp = seion + D + Z
 all_hiragana = "AKSTNHMRYWZDBP"
 
+## JIS keyboard layout
+kbd_home_left = ['ち','と', 'し','は','き']
+kbd_home_right = ['く','ま','の','り','れ','け','む']
+kbd_upper_left = ['た','て','い','す','か']
+kbd_upper_right = [ 'な', 'に', 'ら', 'せ' ]
+kbd_lower_left = [ 'つ', 'さ', 'そ', 'ひ', 'こ']
+kbd_lower_right = [ 'み','も','ね','る','め','ろ']
+kbd_num_left = ['ぬ','ふ','あ','う','え','お']
+kbd_num_right = ['や', 'ゆ', 'よ', 'わ', 'ほ', 'へ']
+
+default_kana = "QAZYHN17"
+kbd_mapping = {
+        'Q':kbd_upper_left,
+        'A':kbd_home_left,
+        'Z':kbd_lower_left,
+
+        'y':kbd_upper_right,
+        'H':kbd_home_right,
+        'N':kbd_lower_right,
+
+        '1':kbd_num_left,
+        '7':kbd_num_right,
+        }
+
+def getAggregateStringJIS(symb):
+    allchars = ""
+    for char in symb:
+        for item in kbd_mapping[char]:
+            allchars += item
+    return allchars
+
 def getAggregateList(symb = all_hiragana):
     agg = []
     for char in symb:

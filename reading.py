@@ -13,6 +13,7 @@ trans = str.maketrans("", "", unicode_whitespace)
 # Hitting enter with a blank line will play the associated mp3 file to check pronunciation
 # Hitting enter with a space displays the english translation
 default_kana = hira.all_hiragana
+default_kana = "QAZYHN17"
 parser = argparse.ArgumentParser( description="Practice reading hiragana")
 parser.add_argument("--count", type=int, default = 50)
 parser.add_argument("--minkana", type=int, 
@@ -22,6 +23,7 @@ parser.add_argument('--include' , type=str, default=default_kana,
                     help="A string specifying the hiragana groups to drill, default is: " + 
                     default_kana + " To drill just words with vowels and K's do --include AK")
 
+parser.add_argument('--jis_include', type=str, default="", help="Same idea as include, but specifies JIS layout keyboard groups to include. Qwerty keys refer to the start of the groups: QAZYHN17")
 parser.add_argument('--kanji', action='store_true', help='Display Kanji' )
 parser.add_argument('--sentence', action='store_true', help='Do sentences instead of word' )
 parser.add_argument('--sentence-max', type=int, help='Max length of sentences to drill' , default=1000)
@@ -41,7 +43,12 @@ inv_map = {v: k for k, v in mp3map.items()}
 min_kana_count = args.minkana
 do_all = False
 
-allchars = hira.getAggregateString(args.include)
+allchars = ""
+
+if len(args.jis_include) > 0:
+    allchars = hira.getAggregateStringJIS(args.jis_include)
+else:
+    allchars = hira.getAggregateString(args.include)
 
 sentence_list = []
 vocab_list = []
